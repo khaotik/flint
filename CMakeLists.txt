@@ -489,10 +489,11 @@ if(NOT DEFINED IPO_SUPPORTED)
     set(IPO_SUPPORTED ${ipo_supported} CACHE INTERNAL "Introprocedural Optimization" FORCE)
 endif()
 
+# FIXME for now this would result in "invalid register" during build
 # allow overriding IPO by setting -DCMAKE_INTERPROCEDURAL_OPTIMIZATION
-if (IPO_SUPPORTED AND "${CMAKE_INTERPROCEDURAL_OPTIMIZATION}" STREQUAL "")
-    set_target_properties(flint PROPERTIES INTERPROCEDURAL_OPTIMIZATION TRUE)
-endif()
+# if (IPO_SUPPORTED AND "${CMAKE_INTERPROCEDURAL_OPTIMIZATION}" STREQUAL "")
+    # set_target_properties(flint PROPERTIES INTERPROCEDURAL_OPTIMIZATION TRUE)
+# endif()
 
 if(NOT MSVC)
 	target_link_libraries(flint PUBLIC m)
